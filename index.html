@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <title>iArbeid Forenklet Profilguide</title>
+    <style>
+        body {
+            font-family: Lexend, sans-serif;
+            background-color: #f4f4f4;
+            padding: 2rem;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .kort {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .logo-preview {
+            max-width: 200px;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.95rem;
+        }
+
+        .color-square-full {
+            width: 100%;
+            height: 100px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+        }
+
+        .farge-wrapper {
+            margin-bottom: 0.5rem;
+        }
+
+        .fargetype {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .fargetype:hover {
+            background-color: #e0e0e0;
+        }
+
+        .fargetype p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .kopiert {
+            color: green;
+            font-style: italic;
+        }
+
+        .kort-wrapper {
+            display: flex;
+            gap: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>iArbeid</h1>
+    <div class="kort-wrapper">
+        <!-- LOGO – SVART -->
+        <div class="kort">
+            <h2>Logo – Svart</h2>
+            <img src="URL_TIL_SVART_LOGO" alt="Svart logo" class="logo-preview">
+            <a href="URL_TIL_SVART_LOGO" download class="download-btn">Last ned svart logo</a>
+        </div>
+
+        <!-- LOGO – HVIT -->
+        <div class="kort">
+            <h2>Logo – Hvit</h2>
+            <img src="URL_TIL_HVIT_LOGO" alt="Hvit logo" class="logo-preview"
+                style="background: #333; padding: 1rem; border-radius: 8px;">
+            <a href="URL_TIL_HVIT_LOGO" download class="download-btn">Last ned hvit logo</a>
+        </div>
+    </div>
+
+    <div class="kort-wrapper">
+
+        <!-- FARGEKORT -->
+
+
+        <div class="kort">
+            <div class="color-square-full" data-color="#3F4E36"></div>
+            <div class="farge-wrapper">
+                Bærekraft
+            </div>
+            <div class="farge-wrapper">
+                <div class="fargetype">
+                    HTML:
+                    <p class="clickable">#3F4E36</p>
+                </div>
+                <div class="fargetype">
+                    RGB:
+                    <p class="clickable">63 78 54</p>
+                </div>
+                <div class="fargetype">
+                    CMYK:
+                    <p class="clickable">19 0 31 69</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="kort">
+            <div class="color-square-full" data-color="#C88432"></div>
+            <div class="farge-wrapper">Varme</div>
+            <div class="farge-wrapper">
+                <div class="fargetype clickable" data-value="#C88432">
+                    HTML: <p>#C88432</p>
+                </div>
+                <div class="fargetype clickable" data-value="200 132 50">
+                    RGB: <p>200 132 50</p>
+                </div>
+                <div class="fargetype clickable" data-value="0 33 72 19">
+                    CMYK: <p>0 33 72 19</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="kort">
+            <div class="color-square-full" data-color="#65251A"></div>
+            <div class="farge-wrapper">
+                Mangfold
+            </div>
+            <div class="farge-wrapper">
+                <div class="fargetype">
+                    HTML:
+                    <p class="clickable">#65251A</p>
+                </div>
+                <div class="fargetype">
+                    RGB:
+                    <p class="clickable">101 37 26</p>
+                </div>
+                <div class="fargetype">
+                    CMYK:
+                    <p class="clickable">0 63 74 60</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="kort">
+            <div class="color-square-full" data-color="#3A2415"></div>
+            <div class="farge-wrapper">
+                Stabilitet
+            </div>
+            <div class="farge-wrapper">
+                <div class="fargetype">
+                    HTML:
+                    <p class="clickable">#3A2415</p>
+                </div>
+                <div class="fargetype">
+                    RGB:
+                    <p class="clickable">58 36 21</p>
+                </div>
+                <div class="fargetype">
+                    CMYK:
+                    <p class="clickable">0 38 64 77</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Setter riktig farge på fargeboksen
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('.color-square-full').forEach(el => {
+                const color = el.dataset.color;
+                el.style.backgroundColor = color;
+            });
+        });
+
+        // Kopier til utklippstavlen med visuell feedback
+        function copyTextToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+        }
+
+        document.querySelectorAll('.clickable').forEach(el => {
+            el.addEventListener('click', () => {
+                const text = el.dataset.value;
+                copyTextToClipboard(text);
+
+                const p = el.querySelector('p');
+                const original = p.textContent;
+                p.textContent = 'Kopiert!';
+                p.classList.add('kopiert');
+
+                setTimeout(() => {
+                    p.textContent = original;
+                    p.classList.remove('kopiert');
+                }, 1000);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
