@@ -3,49 +3,142 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iArbeid Forenklet Profilguide</title>
     <style>
         body {
             font-family: Lexend, sans-serif;
             background-color: #f4f4f4;
             padding: 2rem;
-            margin: auto;
+            margin: 0;
+            max-width: 1200px;
+            margin-left: 350px;
+            /* Plass til navigasjonsmeny */
+        }
+
+        /* Navigasjonsmeny */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background: #FFFFFF;
+            padding: 2rem 1rem;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin-bottom: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: #97CA31;
+        }
+
+        nav a:focus {
+            outline: 2px solid #97CA31;
+            outline-offset: 2px;
+        }
+
+        /* Hamburgermeny for mobil */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 1rem;
         }
 
         h1 {
             text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 1em;
+            color: #4A4A4A;
+            font-weight: 500;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .kort-wrapper {
+            display: grid;
+            gap: 24px;
             margin-bottom: 2rem;
+        }
+
+        .logo-kort-wrapper {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .farge-kort-wrapper {
+            grid-template-columns: repeat(4, 1fr);
         }
 
         .kort {
             background: white;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 10px;
-            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .logo-preview {
-            max-width: 200px;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
             display: block;
             margin-bottom: 1rem;
+            object-fit: contain;
         }
 
         .download-btn {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: #0077cc;
-            color: white;
+            display: block;
+            padding: 0.6rem 1rem;
+            background-color: #97CA31;
+            color: black;
+            text-align: center;
             text-decoration: none;
             border-radius: 5px;
             font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .download-btn:hover {
+            background-color: #79A227;
+            transform: scale(1.02);
+        }
+
+        .download-btn:focus {
+            outline: 2px solid #97CA31;
+            outline-offset: 2px;
         }
 
         .color-square-full {
             width: 100%;
-            height: 100px;
+            height: 80px;
             border-radius: 8px;
             margin-bottom: 1rem;
             border: 1px solid #ddd;
+            position: relative;
+            cursor: pointer;
         }
 
         .farge-wrapper {
@@ -54,18 +147,24 @@
 
         .fargetype {
             display: flex;
-            justify-content: space-between;
+            gap: 4px;
             align-items: center;
             background-color: #f0f0f0;
             padding: 0.5rem 1rem;
             border-radius: 5px;
             margin-bottom: 0.5rem;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
         .fargetype:hover {
             background-color: #e0e0e0;
+            transform: scale(1.02);
+        }
+
+        .fargetype:focus {
+            outline: 2px solid #97CA31;
+            outline-offset: 2px;
         }
 
         .fargetype p {
@@ -74,135 +173,259 @@
         }
 
         .kopiert {
-            color: green;
+            color: #28a745;
             font-style: italic;
+            animation: fadeInOut 0.3s ease-in-out;
         }
 
-        .kort-wrapper {
-            display: flex;
-            gap: 16px;
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+        }
+
+        /* Responsiv design */
+        @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 1rem;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .farge-kort-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-kort-wrapper {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Navigasjonsmeny -->
+    <div class="hamburger">☰</div>
+    <nav>
+        <ul>
+            <li><a href="#logo">Logo</a></li>
+            <li><a href="#farger">Hovedfarger</a></li>
+            <li><a href="#foto">Foto</a></li>
+            <li><a href="#illustrasjoner">Illustrasjoner</a></li>
+        </ul>
+    </nav>
 
-    <h1>iArbeid</h1>
-    <div class="kort-wrapper">
-        <!-- LOGO – SVART -->
-        <div class="kort">
-            <h2>Logo – Svart</h2>
-            <img src="URL_TIL_SVART_LOGO" alt="Svart logo" class="logo-preview">
-            <a href="URL_TIL_SVART_LOGO" download class="download-btn">Last ned svart logo</a>
+    <!-- Logo-seksjon -->
+    <section id="logo">
+        <h1>Logo</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">Velg mellom svart eller hvit logo for
+            nedlasting.</p>
+        <div class="kort-wrapper logo-kort-wrapper">
+            <div class="kort">
+                <h2>Logo – Svart</h2>
+                <img src="logo-hvit.svg" alt="Svart logo" class="logo-preview"
+                    style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
+                <a href="URL_TIL_SVART_LOGO" download class="download-btn"
+                    aria-label="Last ned svart logo i SVG-format">Last ned svart logo</a>
+            </div>
+            <div class="kort">
+                <h2>Logo – Hvit</h2>
+                <img src="logo-svart.svg" alt="Hvit logo" class="logo-preview"
+                    style="background: #333; padding: 1rem; border-radius: 8px;">
+                <a href="URL_TIL_HVIT_LOGO" download class="download-btn"
+                    aria-label="Last ned hvit logo i SVG-format">Last ned hvit logo</a>
+            </div>
         </div>
+    </section>
 
-        <!-- LOGO – HVIT -->
-        <div class="kort">
-            <h2>Logo – Hvit</h2>
-            <img src="URL_TIL_HVIT_LOGO" alt="Hvit logo" class="logo-preview"
-                style="background: #333; padding: 1rem; border-radius: 8px;">
-            <a href="URL_TIL_HVIT_LOGO" download class="download-btn">Last ned hvit logo</a>
+    <!-- Hovedfarger-seksjon -->
+    <section id="farger">
+        <h1>Hovedfarger</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">Klikk på fargekoder eller fargeboks for å
+            kopiere.</p>
+        <div class="kort-wrapper farge-kort-wrapper">
+            <div class="kort">
+                <div class="color-square-full" data-color="#3F4E36"></div>
+                <div class="farge-wrapper">Bærekraft</div>
+                <div class="farge-wrapper">
+                    <div class="fargetype" data-value="#3F4E36">
+                        HTML: <p class="clickable">#3F4E36</p>
+                    </div>
+                    <div class="fargetype" data-value="63 78 54">
+                        RGB: <p class="clickable">63 78 54</p>
+                    </div>
+                    <div class="fargetype" data-value="19 0 31 69">
+                        CMYK: <p class="clickable">19 0 31 69</p>
+                    </div>
+                </div>
+            </div>
+            <div class="kort">
+                <div class="color-square-full" data-color="#C88432"></div>
+                <div class="farge-wrapper">Varme</div>
+                <div class="farge-wrapper">
+                    <div class="fargetype" data-value="#C88432">
+                        HTML: <p class="clickable">#C88432</p>
+                    </div>
+                    <div class="fargetype" data-value="200 132 50">
+                        RGB: <p class="clickable">200 132 50</p>
+                    </div>
+                    <div class="fargetype" data-value="0 33 72 19">
+                        CMYK: <p class="clickable">0 33 72 19</p>
+                    </div>
+                </div>
+            </div>
+            <div class="kort">
+                <div class="color-square-full" data-color="#65251A"></div>
+                <div class="farge-wrapper">Mangfold</div>
+                <div class="farge-wrapper">
+                    <div class="fargetype" data-value="#65251A">
+                        HTML: <p class="clickable">#65251A</p>
+                    </div>
+                    <div class="fargetype" data-value="101 37 26">
+                        RGB: <p class="clickable">101 37 26</p>
+                    </div>
+                    <div class="fargetype" data-value="0 63 74 60">
+                        CMYK: <p class="clickable">0 63 74 60</p>
+                    </div>
+                </div>
+            </div>
+            <div class="kort">
+                <div class="color-square-full" data-color="#3A2415"></div>
+                <div class="farge-wrapper">Stabilitet</div>
+                <div class="farge-wrapper">
+                    <div class="fargetype" data-value="#3A2415">
+                        HTML: <p class="clickable">#3A2415</p>
+                    </div>
+                    <div class="fargetype" data-value="58 36 21">
+                        RGB: <p class="clickable">58 36 21</p>
+                    </div>
+                    <div class="fargetype" data-value="0 38 64 77">
+                        CMYK: <p class="clickable">0 38 64 77</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- Foto-seksjon -->
+    <section id="foto">
+        <h1>Foto</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">Last ned godkjente bilder for bruk i
+            markedsføring.</p>
+        <div class="kort-wrapper logo-kort-wrapper">
+            <div class="kort">
+                <h2>Foto – Kampanje</h2>
+                <img src="placeholder-foto.jpg" alt="Kampanjebilde" class="logo-preview"
+                    style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
+                <a href="URL_TIL_FOTO" download class="download-btn" aria-label="Last ned kampanjebilde">Last ned
+                    foto</a>
+            </div>
+            <div class="kort">
+                <h2>Foto – Team</h2>
+                <img src="placeholder-foto-team.jpg" alt="Teambilde" class="logo-preview"
+                    style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
+                <a href="URL_TIL_FOTO_TEAM" download class="download-btn" aria-label="Last ned teambilde">Last ned
+                    foto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Illustrasjons-seksjon -->
+    <section id="illustrasjoner">
+        <h1>Illustrasjoner</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">Last ned illustrasjoner for bruk i
+            presentasjoner og materiell.</p>
+        <div class="kort-wrapper logo-kort-wrapper">
+            <div class="kort">
+                <h2>Illustrasjon – Ikonsett</h2>
+                <img src="placeholder-illustrasjon.svg" alt="Ikonsett" class="logo-preview"
+                    style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
+                <a href="URL_TIL_ILLUSTRASJON" download class="download-btn" aria-label="Last ned ikonsett">Last ned
+                    illustrasjon</a>
+            </div>
+            <div class="kort">
+                <h2>Illustrasjon – Grafikk</h2>
+                <img src="placeholder-illustrasjon-grafikk.svg" alt="Grafikk" class="logo-preview"
+                    style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
+                <a href="URL_TIL_ILLUSTRASJON_GRAFIKK" download class="download-btn" aria-label="Last ned grafikk">Last
+                    ned illustrasjon</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Komplett oversikt -->
+    <div class="kort">
+        <h2>Komplett profilguide</h2>
+        <a href="https://profilguide.no/iarbeid" download class="download-btn"
+            aria-label="Last ned detaljert profilguide">Se detaljert oversikt over alle elementer</a>
     </div>
-
-    <div class="kort-wrapper">
-
-        <!-- FARGEKORT -->
-
-
-        <div class="kort">
-            <div class="color-square-full" data-color="#3F4E36"></div>
-            <div class="farge-wrapper">
-                Bærekraft
-            </div>
-            <div class="farge-wrapper">
-                <div class="fargetype">
-                    HTML:
-                    <p class="clickable">#3F4E36</p>
-                </div>
-                <div class="fargetype">
-                    RGB:
-                    <p class="clickable">63 78 54</p>
-                </div>
-                <div class="fargetype">
-                    CMYK:
-                    <p class="clickable">19 0 31 69</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="kort">
-            <div class="color-square-full" data-color="#C88432"></div>
-            <div class="farge-wrapper">Varme</div>
-            <div class="farge-wrapper">
-                <div class="fargetype clickable" data-value="#C88432">
-                    HTML: <p>#C88432</p>
-                </div>
-                <div class="fargetype clickable" data-value="200 132 50">
-                    RGB: <p>200 132 50</p>
-                </div>
-                <div class="fargetype clickable" data-value="0 33 72 19">
-                    CMYK: <p>0 33 72 19</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="kort">
-            <div class="color-square-full" data-color="#65251A"></div>
-            <div class="farge-wrapper">
-                Mangfold
-            </div>
-            <div class="farge-wrapper">
-                <div class="fargetype">
-                    HTML:
-                    <p class="clickable">#65251A</p>
-                </div>
-                <div class="fargetype">
-                    RGB:
-                    <p class="clickable">101 37 26</p>
-                </div>
-                <div class="fargetype">
-                    CMYK:
-                    <p class="clickable">0 63 74 60</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="kort">
-            <div class="color-square-full" data-color="#3A2415"></div>
-            <div class="farge-wrapper">
-                Stabilitet
-            </div>
-            <div class="farge-wrapper">
-                <div class="fargetype">
-                    HTML:
-                    <p class="clickable">#3A2415</p>
-                </div>
-                <div class="fargetype">
-                    RGB:
-                    <p class="clickable">58 36 21</p>
-                </div>
-                <div class="fargetype">
-                    CMYK:
-                    <p class="clickable">0 38 64 77</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
     <script>
-        // Setter riktig farge på fargeboksen
+        // Set color for color boxes
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll('.color-square-full').forEach(el => {
-                const color = el.dataset.color;
-                el.style.backgroundColor = color;
+                el.style.backgroundColor = el.dataset.color;
+                el.addEventListener('click', () => {
+                    const color = el.dataset.color;
+                    copyTextToClipboard(color);
+                    const tempText = document.createElement('span');
+                    tempText.textContent = 'Kopiert!';
+                    tempText.className = 'kopiert';
+                    tempText.style.position = 'absolute';
+                    tempText.style.top = '10px';
+                    tempText.style.right = '10px';
+                    el.appendChild(tempText);
+                    setTimeout(() => tempText.remove(), 1000);
+                });
+            });
+
+            // Copy-to-clipboard for color codes
+            document.querySelectorAll('.fargetype').forEach(el => {
+                el.addEventListener('click', () => {
+                    const text = el.dataset.value || el.querySelector('p').textContent;
+                    copyTextToClipboard(text);
+                    const p = el.querySelector('p');
+                    const original = p.textContent;
+                    p.textContent = 'Kopiert!';
+                    p.classList.add('kopiert');
+                    setTimeout(() => {
+                        p.textContent = original;
+                        p.classList.remove('kopiert');
+                    }, 1000);
+                });
+            });
+
+            // Hamburger menu toggle
+            document.querySelector('.hamburger').addEventListener('click', () => {
+                document.querySelector('nav').classList.toggle('active');
             });
         });
 
-        // Kopier til utklippstavlen med visuell feedback
         function copyTextToClipboard(text) {
             const tempInput = document.createElement('input');
             tempInput.value = text;
@@ -211,25 +434,7 @@
             document.execCommand('copy');
             document.body.removeChild(tempInput);
         }
-
-        document.querySelectorAll('.clickable').forEach(el => {
-            el.addEventListener('click', () => {
-                const text = el.dataset.value;
-                copyTextToClipboard(text);
-
-                const p = el.querySelector('p');
-                const original = p.textContent;
-                p.textContent = 'Kopiert!';
-                p.classList.add('kopiert');
-
-                setTimeout(() => {
-                    p.textContent = original;
-                    p.classList.remove('kopiert');
-                }, 1000);
-            });
-        });
     </script>
-
 </body>
 
 </html>
