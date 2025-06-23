@@ -7,18 +7,49 @@
     <title>iArbeid Forenklet Profilguide</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=block" rel="stylesheet">
     <style>
         body {
             font-family: Lexend, sans-serif;
             background-color: #f4f4f4;
-            padding: 4rem;
+            padding: 0.8rem 4rem;
             margin: 0;
             margin-left: 350px;
             /* Plass til navigasjonsmeny */
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+        .outline {
+            background: unset !important;
+            border: 1px solid black;
+        }
+
+        .foto-preview {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=block');
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+
+        .button-group .download-btn {
+            flex: 1 1 auto;
+            text-align: center;
+        }
+
+        .download-btn:after {
+            margin-left: 8px;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            vertical-align: -0.125em;
+            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M12 15V3m9 12v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpath d='m7 10l5 5l5-5'/%3E%3C/g%3E%3C/svg%3E");
+        }
 
 
         /* Navigasjonsmeny */
@@ -119,7 +150,7 @@
 
         .download-btn {
             display: block;
-            padding: 0.6rem 1rem;
+            padding: 1rem 2rem;
             background-color: #97CA31;
             color: black;
             text-align: center;
@@ -130,6 +161,7 @@
             box-sizing: border-box;
         }
 
+
         .download-btn:hover {
             background-color: #79A227;
             transform: scale(1.02);
@@ -138,6 +170,42 @@
         .download-btn:focus {
             outline: 2px solid #97CA31;
             outline-offset: 2px;
+        }
+
+
+
+        .external-btn {
+            display: block;
+            padding: 1rem 2rem;
+            background-color: #E3CE98;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-sizing: border-box;
+        }
+
+
+        .external-btn:hover {
+            background-color: #C88432;
+            transform: scale(1.02);
+        }
+
+        .external-btn:focus {
+            outline: 2px solid #C88432;
+            outline-offset: 2px;
+        }
+
+
+        .external-btn:after {
+            margin-left: 8px;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            vertical-align: -0.125em;
+            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 3h6v6m-11 5L21 3m-3 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3C/svg%3E");
         }
 
         .color-square-full {
@@ -237,7 +305,8 @@
 
         .logo-nav {
             width: 48px;
-            padding: 16px;
+            padding: 0px 16px;
+            margin-bottom: 16px;
         }
     </style>
 </head>
@@ -264,14 +333,25 @@
             <div class="kort">
                 <h2>Logo – Svart</h2>
                 <img src="logo-svart.svg" alt="Svart logo" class="logo-preview">
-                <a href="URL_TIL_SVART_LOGO" download class="download-btn"
-                    aria-label="Last ned svart logo i SVG-format">Last ned svart logo</a>
+                <div class="button-group">
+                    <a href="http://profilguide.no/wp-content/uploads/2025/06/iArbeid-Hovedlogo-Positiv.png" download
+                        class="download-btn" aria-label="Last ned svart logo i PNG-format">Last ned PNG</a>
+                    <a href="http://profilguide.no/wp-content/uploads/2025/06/iArbeid-Hovedlogo-Positiv.svg" download
+                        class="download-btn" aria-label="Last ned svart logo i SVG-format">Last ned SVG</a>
+
+                </div>
             </div>
             <div class="kort">
                 <h2>Logo – Hvit</h2>
                 <img src="logo-hvit.svg" alt="Hvit logo" class="logo-preview  light">
-                <a href="URL_TIL_HVIT_LOGO" download class="download-btn"
-                    aria-label="Last ned hvit logo i SVG-format">Last ned hvit logo</a>
+                <div class="button-group">
+                    <a href="http://profilguide.no/wp-content/uploads/2025/06/iArbeid-Hovedlogo-Negativ.png" download
+                        class="download-btn" aria-label="Last ned svart logo i PNG-format">Last ned PNG</a>
+
+                    <a href="http://profilguide.no/wp-content/uploads/2025/06/iArbeid-Hovedlogo-Negativ.svg" download
+                        class="download-btn" aria-label="Last ned svart logo i SVG-format">Last ned
+                        SVG</a>
+                </div>
             </div>
         </div>
     </section>
@@ -352,19 +432,13 @@
             markedsføring.</p>
         <div class="kort-wrapper logo-kort-wrapper">
             <div class="kort">
-                <h2>Foto – Kampanje</h2>
-                <img src="placeholder-foto.jpg" alt="Kampanjebilde" class="logo-preview"
-                    style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
-                <a href="URL_TIL_FOTO" download class="download-btn" aria-label="Last ned kampanjebilde">Last ned
-                    foto</a>
+                <h2>Fotoarkiv</h2>
+                <img src="foto-preview.webp" alt="Forhåndsvisning av foto." class="foto-preview">
+                <a href="http://profilguide.no/wp-content/uploads/2025/06/iArbeid-Fotoarkiv.zip" download
+                    class="download-btn" aria-label="Last ned fotoarkiv">Last ned
+                    fotorkiv</a>
             </div>
-            <div class="kort">
-                <h2>Foto – Team</h2>
-                <img src="placeholder-foto-team.jpg" alt="Teambilde" class="logo-preview"
-                    style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
-                <a href="URL_TIL_FOTO_TEAM" download class="download-btn" aria-label="Last ned teambilde">Last ned
-                    foto</a>
-            </div>
+
         </div>
     </section>
 
@@ -375,28 +449,28 @@
             presentasjoner og materiell.</p>
         <div class="kort-wrapper logo-kort-wrapper">
             <div class="kort">
-                <h2>Illustrasjon – Ikonsett</h2>
-                <img src="placeholder-illustrasjon.svg" alt="Ikonsett" class="logo-preview"
+                <h2>Illustrasjonsarkiv</h2>
+                <img src="illustrasjoner.webp" alt="Fremvisning av illustrasjonsstil." class="logo-preview"
                     style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
-                <a href="URL_TIL_ILLUSTRASJON" download class="download-btn" aria-label="Last ned ikonsett">Last ned
-                    illustrasjon</a>
+                <a href="https://profilguide.no/wp-content/uploads/2025/04/For-skjerm-1.zip" download
+                    class="download-btn" aria-label="Last ned illustrasjonsarkiv">Last ned
+                    illustrasjonsarkiv</a>
             </div>
             <div class="kort">
-                <h2>Illustrasjon – Grafikk</h2>
-                <img src="placeholder-illustrasjon-grafikk.svg" alt="Grafikk" class="logo-preview"
+                <h2>Ikonsett - Aksel</h2>
+                <img src="ikoner-preview.webp" alt="Grafikk" class="logo-preview"
                     style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
-                <a href="URL_TIL_ILLUSTRASJON_GRAFIKK" download class="download-btn" aria-label="Last ned grafikk">Last
-                    ned illustrasjon</a>
+                <a href="https://aksel.nav.no/ikoner" download class="external-btn"
+                    aria-label="Vis hele ikonbibliotek">Vis hele ikonbibliotek</a>
             </div>
         </div>
     </section>
 
     <!-- Komplett oversikt -->
-    <div class="kort">
-        <h2>Komplett profilguide</h2>
-        <a href="https://profilguide.no/iarbeid" download class="download-btn"
-            aria-label="Last ned detaljert profilguide">Se detaljert oversikt over alle elementer</a>
-    </div>
+
+    <a href="https://profilguide.no/iarbeid" download class="external-btn outline"
+        aria-label="Se detaljert profilguide">Se detaljert oversikt over alle elementer</a>
+
 
     <script>
         // Set color for color boxes
@@ -447,6 +521,13 @@
             document.execCommand('copy');
             document.body.removeChild(tempInput);
         }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+
     </script>
 </body>
 
