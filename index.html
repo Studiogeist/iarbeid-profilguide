@@ -5,16 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iArbeid Forenklet Profilguide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Lexend, sans-serif;
             background-color: #f4f4f4;
-            padding: 2rem;
+            padding: 4rem;
             margin: 0;
-            max-width: 1200px;
             margin-left: 350px;
             /* Plass til navigasjonsmeny */
         }
+
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
 
         /* Navigasjonsmeny */
         nav {
@@ -32,10 +37,8 @@
             list-style: none;
             padding: 0;
             margin: 0;
-        }
-
-        nav li {
-            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
         }
 
         nav a {
@@ -43,15 +46,19 @@
             color: #333;
             font-weight: 500;
             transition: color 0.2s ease;
+            padding: 16px;
+            display: block;
+            border-radius: 8px;
         }
 
         nav a:hover,
         nav a:focus {
-            color: #97CA31;
+            color: #3F4E36;
+            background-color: #F3F0E2;
         }
 
         nav a:focus {
-            outline: 2px solid #97CA31;
+            outline: 2px solid #3F4E36;
             outline-offset: 2px;
         }
 
@@ -64,7 +71,6 @@
         }
 
         h1 {
-            text-align: center;
             font-size: 2rem;
             margin-bottom: 1rem;
             width: 100%;
@@ -96,16 +102,19 @@
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .logo-preview {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
             display: block;
             margin-bottom: 1rem;
             object-fit: contain;
+            width: -webkit-fill-available;
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .light {
+            background-color: #333;
         }
 
         .download-btn {
@@ -225,6 +234,11 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .logo-nav {
+            width: 48px;
+            padding: 16px;
+        }
     </style>
 </head>
 
@@ -232,6 +246,7 @@
     <!-- Navigasjonsmeny -->
     <div class="hamburger">☰</div>
     <nav>
+        <img src="emblem-svart.svg" alt="Svart logo" class="logo-nav">
         <ul>
             <li><a href="#logo">Logo</a></li>
             <li><a href="#farger">Hovedfarger</a></li>
@@ -243,20 +258,18 @@
     <!-- Logo-seksjon -->
     <section id="logo">
         <h1>Logo</h1>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem;">Velg mellom svart eller hvit logo for
+        <p style="color: #666; margin-bottom: 2rem;">Velg mellom svart eller hvit logo for
             nedlasting.</p>
         <div class="kort-wrapper logo-kort-wrapper">
             <div class="kort">
                 <h2>Logo – Svart</h2>
-                <img src="logo-hvit.svg" alt="Svart logo" class="logo-preview"
-                    style="background: #FFFFFF; padding: 1rem; border-radius: 8px;">
+                <img src="logo-svart.svg" alt="Svart logo" class="logo-preview">
                 <a href="URL_TIL_SVART_LOGO" download class="download-btn"
                     aria-label="Last ned svart logo i SVG-format">Last ned svart logo</a>
             </div>
             <div class="kort">
                 <h2>Logo – Hvit</h2>
-                <img src="logo-svart.svg" alt="Hvit logo" class="logo-preview"
-                    style="background: #333; padding: 1rem; border-radius: 8px;">
+                <img src="logo-hvit.svg" alt="Hvit logo" class="logo-preview  light">
                 <a href="URL_TIL_HVIT_LOGO" download class="download-btn"
                     aria-label="Last ned hvit logo i SVG-format">Last ned hvit logo</a>
             </div>
@@ -266,7 +279,7 @@
     <!-- Hovedfarger-seksjon -->
     <section id="farger">
         <h1>Hovedfarger</h1>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem;">Klikk på fargekoder eller fargeboks for å
+        <p style="color: #666; margin-bottom: 2rem;">Klikk på fargekoder eller fargeboks for å
             kopiere.</p>
         <div class="kort-wrapper farge-kort-wrapper">
             <div class="kort">
@@ -335,7 +348,7 @@
     <!-- Foto-seksjon -->
     <section id="foto">
         <h1>Foto</h1>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem;">Last ned godkjente bilder for bruk i
+        <p style="color: #666; margin-bottom: 2rem;">Last ned godkjente bilder for bruk i
             markedsføring.</p>
         <div class="kort-wrapper logo-kort-wrapper">
             <div class="kort">
@@ -358,7 +371,7 @@
     <!-- Illustrasjons-seksjon -->
     <section id="illustrasjoner">
         <h1>Illustrasjoner</h1>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem;">Last ned illustrasjoner for bruk i
+        <p style="color: #666; margin-bottom: 2rem;">Last ned illustrasjoner for bruk i
             presentasjoner og materiell.</p>
         <div class="kort-wrapper logo-kort-wrapper">
             <div class="kort">
