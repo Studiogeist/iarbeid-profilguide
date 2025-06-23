@@ -62,7 +62,12 @@
             background: #FFFFFF;
             padding: 2rem 1rem;
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
+
+
 
         nav ul {
             list-style: none;
@@ -308,6 +313,29 @@
             padding: 0px 16px;
             margin-bottom: 16px;
         }
+
+        .kontakt {
+            position: fixed;
+            bottom: 20px;
+            display: block;
+            gap: 0px;
+            font-size: 0.8em;
+            line-height: 8px;
+            font-weight: 300;
+        }
+
+        .kontaktperson,
+        .firma-navn,
+        .kontakt-tittel {
+            font-weight: 400;
+        }
+
+        .kontakt a {
+            padding: 0 !important;
+            font-weight: 300;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
     </style>
 </head>
 
@@ -315,13 +343,28 @@
     <!-- Navigasjonsmeny -->
     <div class="hamburger">☰</div>
     <nav>
-        <img src="emblem-svart.svg" alt="Svart logo" class="logo-nav">
         <ul>
+            <img src="emblem-svart.svg" alt="Svart logo" class="logo-nav">
             <li><a href="#logo">Logo</a></li>
             <li><a href="#farger">Hovedfarger</a></li>
             <li><a href="#foto">Foto</a></li>
             <li><a href="#illustrasjoner">Illustrasjoner</a></li>
         </ul>
+        <div class="kontakt">
+            <div class="kontakt-tittel">Kontaktinfo</>
+                <div class="kontakt-detaljer">
+                    <p class="firma-navn">Studiogeist</p>
+                    <p class="separator">—</p>
+                    <p class="kontaktperson">Tord Sandholt</p>
+                    <p class="epost">
+                        <a href="mailto:tord@studiogeist.no">tord@studiogeist.no</a>
+                    </p>
+                    <p class="telefon">
+                        <a href="tel:92646007">926 46 007</a>
+                    </p>
+                </div>
+            </div>
+
     </nav>
 
     <!-- Logo-seksjon -->
@@ -436,7 +479,7 @@
                 <img src="foto-preview.webp" alt="Forhåndsvisning av foto." class="foto-preview">
                 <a href="http://profilguide.no/wp-content/uploads/2025/06/iArbeid-Fotoarkiv.zip" download
                     class="download-btn" aria-label="Last ned fotoarkiv">Last ned
-                    fotorkiv</a>
+                    fotoarkiv</a>
             </div>
 
         </div>
